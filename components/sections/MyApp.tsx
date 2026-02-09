@@ -29,8 +29,10 @@ export default function MyApp() {
                     transition={{ duration: 0.6 }}
                     className="text-center"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-serif text-foreground mb-4">AI英语学习APP - SnapTalk</h2>
-                    <div className="h-1 w-24 bg-primary mx-auto rounded-full" />
+                    <div className="inline-block">
+                        <h2 className="text-[32px] md:text-[48px] font-bold font-serif text-foreground mb-4">AI英语学习APP - SnapTalk</h2>
+                        <div className="h-1 w-full bg-primary rounded-full" />
+                    </div>
                 </motion.div>
 
                 {/* Screenshots Grid - 2 Rows of 5 */}
@@ -47,11 +49,16 @@ export default function MyApp() {
                             {/* Slim iPhone Frame */}
                             <div className="relative group">
                                 {/* iPhone Outer Shell */}
-                                <div
+                                <motion.div
                                     className="relative bg-[#1c1c1e] rounded-[28px] p-[5px] shadow-lg"
                                     style={{
                                         boxShadow: "0 10px 40px -10px rgba(0, 0, 0, 0.3)"
                                     }}
+                                    whileHover={{
+                                        y: -15,
+                                        boxShadow: "0 30px 60px -12px rgba(0, 0, 0, 0.5)"
+                                    }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                     {/* Side Button - Right (Power) */}
                                     <div className="absolute -right-[1.5px] top-[70px] w-[2px] h-[24px] bg-[#2c2c2e] rounded-r-sm" />
@@ -73,7 +80,7 @@ export default function MyApp() {
                                             className="w-full h-auto object-contain"
                                         />
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </motion.div>
                     ))}
@@ -122,6 +129,6 @@ export default function MyApp() {
                 </motion.div>
 
             </div>
-        </section>
+        </section >
     );
 }

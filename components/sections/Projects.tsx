@@ -16,8 +16,10 @@ export default function Projects() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-3">项目经历</h2>
-                    <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
+                    <div className="inline-block">
+                        <h2 className="text-[32px] md:text-[48px] font-bold font-serif text-foreground mb-3">项目经历</h2>
+                        <div className="h-1 w-full bg-primary rounded-full" />
+                    </div>
                 </motion.div>
 
                 <div className="grid md:grid-cols-3 gap-6">
@@ -28,7 +30,7 @@ export default function Projects() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
-                            className="group relative bg-card rounded-2xl p-5 shadow-sm hover:shadow-warm transition-all duration-300 border border-muted/50 flex flex-col h-full"
+                            className="group relative bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 border border-muted-foreground/10 flex flex-col h-full"
                         >
                             <div className="relative aspect-video w-full mb-4 rounded-xl overflow-hidden bg-black/5">
                                 {project.video ? (

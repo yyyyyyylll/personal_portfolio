@@ -27,8 +27,10 @@ export default function SocialMedia() {
                     transition={{ duration: 0.6 }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-3">社交媒体影响力</h2>
-                    <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
+                    <div className="inline-block">
+                        <h2 className="text-[32px] md:text-[48px] font-bold font-serif text-foreground mb-3">社交媒体影响力</h2>
+                        <div className="h-1 w-full bg-primary rounded-full" />
+                    </div>
                 </motion.div>
 
                 {/* Text Content */}
@@ -40,7 +42,7 @@ export default function SocialMedia() {
                     className="max-w-6xl mx-auto text-lg text-foreground/80 leading-[1.5] font-['Microsoft_YaHei'] text-justify"
                 >
                     <p className="indent-[2em] mb-4">
-                        为建立个人品牌并为后续产品宣发积累种子用户，我从 2025 年 8 月底开始运营小红书账号 Link（学习AI中），持续输出 AI 产品知识分享、AI工具实用技巧和项目复盘笔记。（账号链接：<a href="https://xhslink.com/m/3WAWoSFKKGS" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 font-medium">https://xhslink.com/m/3WAWoSFKKGS</a>）
+                        为建立个人品牌并为后续产品宣发做准备，我从 2025 年 8 月底开始运营小红书账号 Link（学习AI中），持续输出 AI 产品知识分享、AI工具实用技巧和项目复盘笔记。（账号链接：<a href="https://xhslink.com/m/3WAWoSFKKGS" target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4 font-medium">https://xhslink.com/m/3WAWoSFKKGS</a>）
                     </p>
                     <p className="indent-[2em] mb-4">
                         在运营过程中，基于互动率与后台数据持续迭代封面风格、标题结构与内容选题，逐步形成稳定的内容增长模型，8 篇笔记成为爆款。账号累计获得 1700+ 粉丝，赞藏量超过 1.5 万。
@@ -64,11 +66,16 @@ export default function SocialMedia() {
                             {/* Slim iPhone Frame */}
                             <div className="relative group">
                                 {/* iPhone Outer Shell */}
-                                <div
+                                <motion.div
                                     className="relative bg-[#1c1c1e] rounded-[28px] p-[5px] shadow-lg"
                                     style={{
                                         boxShadow: "0 10px 40px -10px rgba(0, 0, 0, 0.3)"
                                     }}
+                                    whileHover={{
+                                        y: -15,
+                                        boxShadow: "0 30px 60px -12px rgba(0, 0, 0, 0.5)"
+                                    }}
+                                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                                 >
                                     {/* Side Button - Right (Power) */}
                                     <div className="absolute -right-[1.5px] top-[70px] w-[2px] h-[24px] bg-[#2c2c2e] rounded-r-sm" />
@@ -90,13 +97,13 @@ export default function SocialMedia() {
                                             className="w-full h-auto object-contain"
                                         />
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
                         </motion.div>
                     ))}
                 </div>
 
             </div>
-        </section>
+        </section >
     );
 }

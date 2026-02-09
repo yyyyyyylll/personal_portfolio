@@ -1,21 +1,61 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const navItems = [
-    { name: "About Me", href: "#hero" },
+    { name: "自我介绍", href: "#hero" },
     { name: "AI英语学习APP", href: "#my-app" },
     { name: "实习经历", href: "#experience" },
     { name: "项目经历", href: "#work" },
     { name: "社交媒体影响力", href: "#social-media" },
+    { name: "联系方式", href: "#footer" },
 ];
 
 export default function Navbar() {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const [activeSection, setActiveSection] = useState<string>("#hero");
+
+    useEffect(() => {
+        const sectionIds = navItems.map(item => item.href.replace("#", ""));
+
+        const handleScroll = () => {
+            if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
+                setActiveSection("#footer");
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(`#${entry.target.id}`);
+                    }
+                });
+            },
+            {
+                rootMargin: "-20% 0px -60% 0px",
+                threshold: 0,
+            }
+        );
+
+        sectionIds.forEach((id) => {
+            const element = document.getElementById(id);
+            if (element) {
+                observer.observe(element);
+            }
+        });
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
+        setActiveSection(href);
         const element = document.querySelector(href);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
@@ -27,56 +67,49 @@ export default function Navbar() {
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-fit px-4"
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
         >
-            <nav
-                className="flex items-center gap-2 p-1.5 bg-background/50 backdrop-blur-md rounded-full border border-border/40 shadow-sm hover:shadow-md transition-all duration-300"
-                onMouseLeave={() => setHoveredIndex(null)}
-            >
-                {/* Home Icon */}
-                <a
-                    href="#hero"
-                    onClick={(e) => handleClick(e, "#hero")}
-                    className="flex items-center justify-center w-8 h-8 rounded-full bg-background/50 hover:bg-background/80 transition-colors border border-white/10 text-foreground/80 hover:text-foreground"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
-                </a>
+            <nav className="flex items-center gap-1 px-2 py-2 rounded-full bg-white/80 backdrop-blur-md border border-gray-200/50 shadow-sm">
+                {/* Left Icon */}
+                <button className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 transition-colors text-gray-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="4" x2="4" y1="21" y2="14" />
+                        <line x1="4" x2="4" y1="10" y2="3" />
+                        <line x1="12" x2="12" y1="21" y2="12" />
+                        <line x1="12" x2="12" y1="8" y2="3" />
+                        <line x1="20" x2="20" y1="21" y2="16" />
+                        <line x1="20" x2="20" y1="12" y2="3" />
+                        <line x1="2" x2="6" y1="14" y2="14" />
+                        <line x1="10" x2="14" y1="8" y2="8" />
+                        <line x1="18" x2="22" y1="16" y2="16" />
+                    </svg>
+                </button>
 
-                <div className="flex items-center px-1">
-                    {navItems.map((item, index) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            onClick={(e) => handleClick(e, item.href)}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            className="relative px-3 py-1.5 text-xs font-medium text-foreground/80 hover:text-foreground transition-colors rounded-full"
-                        >
-                            <span className="relative z-10">{item.name}</span>
-                            <AnimatePresence>
-                                {hoveredIndex === index && (
+                {/* Nav Links */}
+                <div className="flex items-center gap-1 px-2">
+                    {navItems.map((item) => {
+                        const isActive = activeSection === item.href;
+                        return (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={(e) => handleClick(e, item.href)}
+                                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full ${isActive ? "text-white" : "text-gray-600 hover:text-gray-900"
+                                    }`}
+                            >
+                                {isActive && (
                                     <motion.span
-                                        layoutId="hoverBackground"
-                                        className="absolute inset-0 bg-foreground/10 rounded-full"
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.8 }}
-                                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                        layoutId="nav-highlight"
+                                        className="absolute inset-0 bg-orange-500 rounded-full"
+                                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        style={{ zIndex: -1 }}
                                     />
                                 )}
-                            </AnimatePresence>
-                        </a>
-                    ))}
+                                {item.name}
+                            </a>
+                        );
+                    })}
                 </div>
-
-                {/* Contact Action Button */}
-                <a
-                    href="#social-media"
-                    onClick={(e) => handleClick(e, "#social-media")}
-                    className="flex items-center gap-1.5 px-3 py-1.5 bg-foreground text-background text-xs font-medium rounded-full hover:opacity-90 transition-opacity"
-                >
-                    <span>Contact Me</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                </a>
             </nav>
         </motion.header>
     );

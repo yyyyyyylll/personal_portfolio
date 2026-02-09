@@ -43,8 +43,10 @@ export default function Experience() {
                     transition={{ duration: 0.6 }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold font-serif text-foreground mb-3">实习经历</h2>
-                    <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
+                    <div className="inline-block">
+                        <h2 className="text-[32px] md:text-[48px] font-bold font-serif text-foreground mb-3">实习经历</h2>
+                        <div className="h-1 w-full bg-primary rounded-full" />
+                    </div>
                 </motion.div>
 
                 <div className="space-y-8">
@@ -68,7 +70,7 @@ export default function Experience() {
                             </div>
 
                             {/* Details Grid with Clockwise Flow */}
-                            <div className="grid md:grid-cols-2 gap-x-16 gap-y-12 pt-4 relative">
+                            <div className="grid md:grid-cols-2 gap-x-16 gap-y-14 pt-4 relative">
                                 {exp.details.map((detail, idx) => {
                                     // Determine order for clockwise flow:
                                     // Index 0 (Item 1) -> TL -> order 1
@@ -87,10 +89,10 @@ export default function Experience() {
                                     return (
                                         <div key={idx} className={`w-full flex flex-col items-center ${orderClass} relative`}>
                                             <div className="w-full bg-white/50 p-6 rounded-2xl border border-muted hover:border-primary/20 transition-all shadow-sm hover:shadow-md h-full flex flex-col relative z-10">
-                                                <h4 className="text-lg font-bold text-primary mb-2">
+                                                <h4 className="text-[20px] font-bold text-primary mb-2">
                                                     {detail.title}
                                                 </h4>
-                                                <p className="text-muted-foreground leading-relaxed text-sm flex-grow">
+                                                <p className="text-muted-foreground leading-relaxed text-base flex-grow">
                                                     {detail.content}
                                                 </p>
                                             </div>

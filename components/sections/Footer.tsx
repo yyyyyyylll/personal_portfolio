@@ -5,7 +5,7 @@ import { Phone, Mail } from "lucide-react";
 
 export default function Footer() {
     return (
-        <footer className="py-16 px-8 md:px-12 bg-[#0a0a0a] text-white">
+        <footer id="footer" className="py-16 px-8 md:px-12 bg-[#0a0a0a] text-white">
             <div className="max-w-6xl mx-auto space-y-10">
                 {/* Motto */}
                 <motion.div
@@ -59,7 +59,7 @@ export default function Footer() {
                     className="text-center"
                 >
                     <p className="text-sm text-white/50">
-                        © 2026 Zhiyu. All rights reserved.
+                        © 2026 Link. All rights reserved.
                     </p>
                 </motion.div>
             </div>
