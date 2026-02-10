@@ -15,7 +15,7 @@ export default function Footer() {
                     transition={{ duration: 0.6 }}
                     className="text-center"
                 >
-                    <p className="text-4xl md:text-5xl font-semibold text-white/90 tracking-wide">
+                    <p className="text-3xl md:text-4xl font-semibold text-white/90 tracking-wide">
                         "The best way to predict the future is to <span className="italic text-orange-500">invent it</span>."
                     </p>
                 </motion.div>
