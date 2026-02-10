@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
-import { ArrowUpRight, Github, Globe, FileText } from "lucide-react";
+import { ArrowUpRight, Github, Globe, FileText, Video } from "lucide-react";
 import Image from "next/image";
 
 export default function Projects() {
@@ -53,7 +53,7 @@ export default function Projects() {
                             </div>
 
                             <div className="mb-4">
-                                <div className="flex justify-between items-center mb-2">
+                                <div className="flex justify-between items-center mb-2 h-9">
                                     <p className="text-sm font-medium text-primary">{project.category}</p>
                                     <div className="flex gap-2">
                                         {project.github && (
@@ -91,6 +91,25 @@ export default function Projects() {
                                                 <Globe className="w-4 h-4" />
                                                 <span>{project.id === "2" ? "进行对话" : "访问网页"}</span>
                                             </a>
+                                        )}
+
+
+                                        {project.videoLink && (
+                                            <a
+                                                href={project.videoLink}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted/50 hover:bg-primary hover:text-white transition-all text-sm font-medium group"
+                                                aria-label="View Video"
+                                            >
+                                                <Video className="w-4 h-4" />
+                                                <span>浏览视频</span>
+                                            </a>
+                                        )}
+                                        {project.note && (
+                                            <span className="text-sm font-medium text-muted-foreground/80 self-center">
+                                                {project.note}
+                                            </span>
                                         )}
 
                                     </div>

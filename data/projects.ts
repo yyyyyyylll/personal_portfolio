@@ -12,6 +12,9 @@ export type Project = {
     demo?: string;
     prompt?: string;
     video?: string;
+    videoLink?: string;
+    videoPassword?: string;
+    note?: string;
 };
 
 export const projects: Project[] = [
@@ -65,6 +68,7 @@ export const projects: Project[] = [
         tags: ["RAG", "策略", "Python"],
         image: "from-blue-200 to-cyan-200",
         date: "2025.12-2026.1",
+        note: "(知识产权保护)",
     },
     {
         id: "5",
@@ -76,6 +80,7 @@ export const projects: Project[] = [
         tags: ["用户调研", "深度访谈", "用户故事"],
         image: "/projects/ai-adoption-cover.png",
         date: "2024.12-2025.12",
+        note: "(论文投稿中)",
     },
     {
         id: "6",
@@ -87,6 +92,7 @@ export const projects: Project[] = [
         tags: ["视频制作", "内容策划", "影像叙事"],
         image: "/projects/maolong-video-cover.png",
         date: "2024.1-2024.3",
-        video: "/videos/maolong-ink-rhyme.mp4",
+        videoLink: "https://pan.baidu.com/s/1k9EeRjSx9kCHYO2O3vcczw?pwd=6g7q",
+        videoPassword: "6g7q",
     },
 ];
