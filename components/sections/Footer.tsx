@@ -6,7 +6,7 @@ import { Phone, Mail } from "lucide-react";
 export default function Footer() {
     return (
         <footer id="footer" className="py-16 px-8 md:px-12 bg-[#0a0a0a] text-white">
-            <div className="max-w-6xl mx-auto space-y-10">
+            <div className="max-w-7xl mx-auto space-y-10">
                 {/* Motto */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
