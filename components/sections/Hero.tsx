@@ -20,7 +20,7 @@ export default function Hero() {
                     }}
                 >
                     <Image
-                        src="/avatar.jpg"
+                        src="/profile.png"
                         alt="Zhiyu"
                         fill
                         className="object-cover"
@@ -53,20 +53,15 @@ export default function Hero() {
                         <p>
                             我熟悉 PRD 撰写、原型设计、产品评测与数据分析，具备 Agent、RAG 和 Context Engineering 的实际项目经验。
                         </p>
-                        <div className="flex justify-end mt-4">
+                        <div className="flex justify-end mt-0">
                             <a
                                 href="/Resume.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex flex-row items-center gap-2 text-primary hover:text-primary/80 transition-colors group cursor-pointer"
+                                className="flex flex-row items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors group cursor-pointer"
                             >
                                 <span className="text-xl font-medium">查看简历</span>
-                                <motion.div
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                                >
-                                    <ArrowRight className="w-6 h-6" />
-                                </motion.div>
+                                <ArrowUpRight className="w-6 h-6" />
                             </a>
                         </div>
                     </div>
@@ -78,7 +73,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                className="absolute bottom-25 left-1/2 -translate-x-1/2"
+                className="absolute bottom-23 left-1/2 -translate-x-1/2"
             >
                 <button
                     onClick={() => {
