@@ -66,7 +66,7 @@ export const projects: Project[] = [
         description: "面向价值观学术研究场景，搭建 RAG 工程结构，设计文档切分策略、数据库索引策略与用户检索链路，完成 RAG 问答系统的开发与优化。",
         impact: "Enhanced research efficiency.",
         tags: ["RAG", "策略", "Python"],
-        image: "from-blue-200 to-cyan-200",
+        image: "/projects/values-rag.png",
         date: "2025.12-2026.1",
         note: "(知识产权保护)",
     },
